@@ -44,6 +44,26 @@ $(document).on('click', '#deletebutton', function(){
     $(this).parent().remove()
 });
 
+$(document).on('click', '#editbutton', function(){
+    var id = $(this).parent().attr('id');
+    const boardid = ref(getDatabase(), 'boards/'+getParameterByName('id')+'/lists/'+id)
+    $(this).parent().find('.cardarea').find("span1").each(function(){
+        if(this.hasAttribute('contenteditable')){
+            this.removeAttribute('contenteditable')
+            update(boardid, {
+                [this.innerHTML]:{
+                    name:this.innerHTML,
+                    type:'text'
+                }
+            })
+        }
+        else{
+            this.setAttribute('contenteditable', '')
+            set(boardid, null)
+        }
+    })
+})
+
 createbutton.addEventListener("click", submitFunc);
 
 function submitFunc(){
@@ -61,12 +81,11 @@ function loadlists(){
     const boards = ref(getDatabase(), 'boards/'+getParameterByName('id')+'/lists')
     const boardname = ref(getDatabase(), 'boards/'+getParameterByName('id'))
     get(boardname).then((snapshot1) => {
-        console.log(snapshot1.val().boardtitle)
-        body.innerHTML += `<span class="bottomtext" role="textbox">${snapshot1.val().boardtitle}</span>`
+        $(body).append(`<span class="bottomtext" role="textbox">${snapshot1.val().boardtitle}</span>`)
     })
     get(boards).then((snapshot) => {
         snapshot.forEach((element) => {
-            $(".largelistcontainer").append(`<div class="listcontainer" id="${element.key}"><p1>${element.key}</p1><br><div class="cardarea"></div><br><span1 class="listinput" id="cardtitleinput" role="textbox" contenteditable>Card Title</span1><br><button class="listinputbutton" id="createcardbutton" type="button">+</button><button class="listinputbutton" id="deletebutton" type="button">X</button></div>`)
+            $(".largelistcontainer").append(`<div class="listcontainer" id="${element.key}"><p1>${element.key}</p1><br><div class="cardarea"></div><br><span1 class="listinput" id="cardtitleinput" role="textbox" contenteditable>Card Title</span1><br><button class="listinputbutton" id="createcardbutton" type="button">+</button><button class="listinputbutton" id="editbutton" type="button">✎</button><button class="listinputbutton" id="deletebutton" type="button">X</button></div>`)
             element.forEach((element2) => {
                 $("#"+element.key).find('.cardarea').append(`<span1 class="listinput" id="cardtitle">${element2.val().name}</span1>`)
             })
