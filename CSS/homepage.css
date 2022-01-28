@@ -1,0 +1,167 @@
+*{
+    font-family: 'Segoe UI';
+}
+
+body{
+    background-color: #ebf5fc;
+}
+
+.boardcontainer{
+    word-wrap: break-word;
+    float: left;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 10px;
+    width: 150px;
+    height: auto;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
+    -2px -2px 5px rgba(255, 255, 255,1);
+}
+
+.boardcontainerinput{
+    float: left;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 10px;
+    width: 150px;
+    height: auto;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
+    -2px -2px 5px rgba(255, 255, 255,1);
+}
+
+.boardcontainer p1{
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.boardcontainerinput span1{
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.boardinput{
+    word-wrap: break-word;
+    display: block;
+    margin: 7px;
+    border-radius: 5px;
+    width: auto;
+    height: auto;
+    border: none;
+    padding: 5px;
+    background-color: transparent;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
+    -2px -2px 5px rgba(255, 255, 255,1);
+}
+
+.darkmodebutton{
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: transparent;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
+    -2px -2px 5px rgba(255, 255, 255,1);
+}
+
+.bottomtext{
+    position: absolute;
+    bottom: 1%;
+    left: 1%;
+    font-size: 100px;
+    font-weight: 40;
+    letter-spacing: 7px;
+}
+
+.boardinputbutton{
+    margin: 5px;
+    border: none;
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    font-size: larger;
+    text-align: center;
+    border-radius: 5px;
+    background-color: transparent;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
+    -2px -2px 5px rgba(255, 255, 255,1);
+}
+
+.boardinput:focus{
+    outline: none;
+    border: none;
+    box-shadow: 2px 2px 5px inset rgba(0,0,0,0.1),
+    -2px -2px 5px inset rgba(255, 255, 255,1);
+}
+
+.boardinputbutton:active, .darkmodebutton:active{
+    box-shadow: 2px 2px 5px inset rgba(0,0,0,0.1),
+    -2px -2px 5px inset rgba(255, 255, 255,1);
+}
+
+.boardinputbutton:hover, .darkmodebutton:hover{
+    cursor: pointer;
+}
+
+body.dark{
+    background-color:#131313;
+}
+body.dark *{
+    box-shadow: none;
+    color: white;
+}
+body.dark .boardcontainer{
+    background-color: #1b1b1b;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.1),
+    -2px -2px 15px rgb(0, 0, 0),
+    inset 2px 2px 5px rgba(0,0,0,0.1),
+    inset -2px -2px 5px rgb(0, 0, 0);
+}
+body.dark .boardinput{
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1),
+    -2px -2px 8px rgb(0, 0, 0),
+    inset 2px 2px 6px rgba(0,0,0,0.1),
+    inset -2px -2px 6px rgb(0, 0, 0);
+}
+body.dark .boardinputbutton{
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1),
+    -2px -2px 8px rgb(0, 0, 0),
+    inset 2px 2px 6px rgba(0,0,0,0.1),
+    inset -2px -2px 6px rgb(0, 0, 0);
+}
+body.dark .boardcontainerinput{
+    background-color: #1b1b1b;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.1),
+    -2px -2px 15px rgb(0, 0, 0),
+    inset 2px 2px 5px rgba(0,0,0,0.1),
+    inset -2px -2px 5px rgb(0, 0, 0);
+}
+body.dark .darkmodebutton{
+    background-color: #1b1b1b;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.1),
+    -2px -2px 15px rgb(0, 0, 0),
+    inset 2px 2px 5px rgba(0,0,0,0.1),
+    inset -2px -2px 5px rgb(0, 0, 0);
+}
+
+#boardinputdesc, #boardinputtitle{
+    letter-spacing: 2px;
+    color: gray;
+}
+
+#openbutton{
+    color: rgb(69, 255, 52);
+}
+#deletebutton{
+    color: rgb(255, 55, 55);
+}
+#createbutton{
+    color: rgb(40, 158, 255)
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/homepage.css">
+    <title>Brello Home</title>
+</head>
+<body>
+    <div class="largeboardcontainer">
+    </div>
+    <div class="boardcontainerinput">
+        <span1 class="boardinput" id="boardinputtitle" role="textbox" contenteditable>Title</span1>
+        <span2 class="boardinput" id="boardinputdesc" role="textbox" contenteditable>Description</span2>
+        <button class="boardinputbutton" id="createbutton" type="button">+</button>
+    </div>
+    <button class="darkmodebutton" type="button">🌙</button>
+    <span class="bottomtext" role="textbox">Brello</span>
+</body>
+<script src="../JS/homepage.js" type="module"></script>
+<script type="module">
+    const darkmodebutton = document.querySelector('.darkmodebutton')
+    const body = document.body;
+    var darkbstate = body.classList;
+    
+    darkmodebutton.addEventListener('click', darkFunc)
+    
+    function darkFunc(){
+        body.classList.toggle('dark');
+        document.cookie = `darkmode=${body.classList}; path=/`
+    }
+
+    if(getCookie('darkmode') == 'dark'){
+        body.classList.toggle('dark');
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+        }
+        return "";
+    }
+</script>
+</html>

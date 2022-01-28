@@ -1,0 +1,168 @@
+*{
+    font-family: 'Segoe UI';
+}
+
+body{
+    background-color: #ebf5fc;
+}
+
+.listcontainer{
+    word-wrap: break-word;
+    float: left;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 10px;
+    width: 150px;
+    height: auto;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
+    -2px -2px 5px rgba(255, 255, 255,1);
+}
+
+.listcontainerinput{
+    float: left;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 10px;
+    width: 150px;
+    height: auto;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
+    -2px -2px 5px rgba(255, 255, 255,1);
+}
+
+.listcontainer p1{
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.listcontainerinput span1{
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.listinput{
+    word-wrap: break-word;
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+    border-radius: 5px;
+    height: auto;
+    border: none;
+    padding: 5px;
+    width: 150px;
+    background-color: transparent;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
+    -2px -2px 5px rgba(255, 255, 255,1);
+}
+
+.darkmodebutton{
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: transparent;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
+    -2px -2px 5px rgba(255, 255, 255,1);
+}
+
+.bottomtext{
+    position: absolute;
+    bottom: 1%;
+    left: 1%;
+    font-size: 100px;
+    font-weight: 40;
+    letter-spacing: 7px;
+}
+
+.listinputbutton{
+    margin: 5px;
+    border: none;
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    font-size: larger;
+    text-align: center;
+    border-radius: 5px;
+    background-color: transparent;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
+    -2px -2px 5px rgba(255, 255, 255,1);
+}
+
+.listinput:focus{
+    outline: none;
+    border: none;
+    box-shadow: 2px 2px 5px inset rgba(0,0,0,0.1),
+    -2px -2px 5px inset rgba(255, 255, 255,1);
+}
+
+.listinputbutton:active{
+    box-shadow: 2px 2px 5px inset rgba(0,0,0,0.1),
+    -2px -2px 5px inset rgba(255, 255, 255,1);
+}
+
+.listinputbutton:hover{
+    cursor: pointer;
+}
+
+#openbutton{
+    color: rgb(69, 255, 52);
+}
+#deletebutton{
+    color: rgb(255, 55, 55);
+}
+#createbutton, #createcardbutton{
+    color: rgb(40, 158, 255)
+}
+
+body.dark{
+    background-color:#131313;
+}
+body.dark *{
+    box-shadow: none;
+    color: white;
+}
+body.dark .listcontainer{
+    background-color: #1b1b1b;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.1),
+    -2px -2px 15px rgb(0, 0, 0),
+    inset 2px 2px 5px rgba(0,0,0,0.1),
+    inset -2px -2px 5px rgb(0, 0, 0);
+}
+body.dark .listinput{
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1),
+    -2px -2px 8px rgb(0, 0, 0),
+    inset 2px 2px 6px rgba(0,0,0,0.1),
+    inset -2px -2px 6px rgb(0, 0, 0);
+}
+body.dark .listinputbutton{
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1),
+    -2px -2px 8px rgb(0, 0, 0),
+    inset 2px 2px 6px rgba(0,0,0,0.1),
+    inset -2px -2px 6px rgb(0, 0, 0);
+}
+body.dark .listcontainerinput{
+    background-color: #1b1b1b;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.1),
+    -2px -2px 15px rgb(0, 0, 0),
+    inset 2px 2px 5px rgba(0,0,0,0.1),
+    inset -2px -2px 5px rgb(0, 0, 0);
+}
+body.dark .darkmodebutton{
+    background-color: #1b1b1b;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.1),
+    -2px -2px 15px rgb(0, 0, 0),
+    inset 2px 2px 5px rgba(0,0,0,0.1),
+    inset -2px -2px 5px rgb(0, 0, 0);
+}
+
+#cardtitleinput, #listinputtitle{
+    letter-spacing: 2px;
+    color: gray;
+}
