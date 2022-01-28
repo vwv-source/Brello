@@ -14,6 +14,7 @@ body{
     margin: 10px;
     width: 150px;
     height: auto;
+    background-color: #ebf5fc;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
     -2px -2px 5px rgba(255, 255, 255,1);
 }
@@ -56,8 +57,8 @@ body{
     -2px -2px 5px rgba(255, 255, 255,1);
 }
 
-.darkmodebutton{
-    position: absolute;
+.homebutton, .darkmodebutton{
+    position: fixed;
     bottom: 1%;
     right: 1%;
     width: 50px;
@@ -67,13 +68,20 @@ body{
     border: none;
     padding: 5px;
     border-radius: 5px;
-    background-color: transparent;
+    background-color: #ebf5fc;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
     -2px -2px 5px rgba(255, 255, 255,1);
 }
 
+.homebutton{
+    bottom: 1%;
+    right: 5%;
+}
+
 .bottomtext{
-    position: absolute;
+    z-index: -5;
+    pointer-events: none;
+    position: fixed;
     bottom: 1%;
     left: 1%;
     font-size: 75px;
@@ -102,12 +110,12 @@ body{
     -2px -2px 5px inset rgba(255, 255, 255,1);
 }
 
-.listinputbutton:active{
+.listinputbutton:active, .darkmodebutton:active, .homebutton:active{
     box-shadow: 2px 2px 5px inset rgba(0,0,0,0.1),
     -2px -2px 5px inset rgba(255, 255, 255,1);
 }
 
-.listinputbutton:hover, .darkmodebutton{
+.listinputbutton:hover, .darkmodebutton, .homebutton{
     cursor: pointer;
 }
 
@@ -158,6 +166,13 @@ body.dark .listcontainerinput{
     inset -2px -2px 5px rgb(0, 0, 0);
 }
 body.dark .darkmodebutton{
+    background-color: #1b1b1b;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.1),
+    -2px -2px 15px rgb(0, 0, 0),
+    inset 2px 2px 5px rgba(0,0,0,0.1),
+    inset -2px -2px 5px rgb(0, 0, 0);
+}
+body.dark .homebutton{
     background-color: #1b1b1b;
     box-shadow: 2px 2px 15px rgba(0,0,0,0.1),
     -2px -2px 15px rgb(0, 0, 0),

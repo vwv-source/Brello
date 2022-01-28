@@ -15,14 +15,19 @@
         <button class="listinputbutton" id="createbutton" type="button">+</button>
     </div>
     <button class="darkmodebutton" type="button">🌙</button>
+    <button class="homebutton" type="button">🏠</button>
 </body>
 <script src="../JS/boardpage.js" type="module"></script>
 <script type="module">
     const darkmodebutton = document.querySelector('.darkmodebutton')
+    const homebutton = document.querySelector('.homebutton')
     const body = document.body;
     var darkbstate = body.classList;
     
     darkmodebutton.addEventListener('click', darkFunc)
+    homebutton.addEventListener('click', function(){
+        window.location.href = "/HTML/homepage.html";
+    })
     
     function darkFunc(){
         body.classList.toggle('dark');

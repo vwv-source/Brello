@@ -30,6 +30,22 @@ $(document).on('click', '#deletebutton', function(){
     $(this).parent().remove()
 });
 
+$(document).on('click', '#editbutton', function(){
+    $(this).parent().find('span1,span2').each(function(){
+        if(this.hasAttribute('contenteditable')){
+            this.removeAttribute('contenteditable')
+            var boardtitle = ref(getDatabase(), 'boards/'+$(this).parent().attr('id')+'/boardtitle')
+            var boarddesc = ref(getDatabase(), 'boards/'+$(this).parent().attr('id')+'/boarddesc')
+
+            set(boardtitle, $(this).parent().find('span1').html())
+            set(boarddesc, $(this).parent().find('span2').html())
+        }
+        else{
+            this.setAttribute('contenteditable', '')
+        }
+    })
+})
+
 $(document).on('click', '#openbutton', function(){
     window.location.href = "../HTML/boardpage.html?id="+$(this).parent().attr('id')
 });
@@ -49,7 +65,7 @@ function submitFunc(){
                 boarddesc:boardinputdesc.innerHTML
             }
     })
-    $(".largeboardcontainer").append(`<div class="boardcontainer" id="${id}"><p1>${boardinputtitle.innerHTML}</p1><br><br><p2>${boardinputdesc.innerHTML}</p2><br><br><button class="boardinputbutton" id="openbutton" type="button">⇱</button><button class="boardinputbutton" id="deletebutton" type="button">X</button></div>`)
+    $(".largeboardcontainer").append(`<div class="boardcontainer" id="${id}"><span1>${boardinputtitle.innerHTML}</span1><br><br><span2>${boardinputdesc.innerHTML}</span2><br><br><button class="boardinputbutton" id="openbutton" type="button">⇱</button><button class="boardinputbutton" id="deletebutton" type="button">X</button></div>`)
 }
 
 function boardsload(){
@@ -57,7 +73,7 @@ function boardsload(){
     get(boards).then((snapshot) => {
         snapshot.forEach((element) => {
             var readelement = element.val()
-            $(".largeboardcontainer").append(`<div class="boardcontainer" id="${element.key}"><p1>${readelement.boardtitle}</p1><br><br><p2>${readelement.boarddesc}</p2><br><br><button class="boardinputbutton" id="openbutton" type="button">⇱</button><button class="boardinputbutton" id="deletebutton" type="button">X</button></div>`)
+            $(".largeboardcontainer").append(`<div class="boardcontainer" id="${element.key}"><span1>${readelement.boardtitle}</span1><br><br><span2>${readelement.boarddesc}</span2><br><br><button class="boardinputbutton" id="openbutton" type="button">⇱</button><button class="boardinputbutton" id="editbutton" type="button">✎</button><button class="boardinputbutton" id="deletebutton" type="button">X</button></div>`)
         })
     })
 }

@@ -56,6 +56,9 @@ $(document).on('click', '#editbutton', function(){
                     type:'text'
                 }
             })
+            if(!this.innerHTML){
+                this.remove()
+            }
         }
         else{
             this.setAttribute('contenteditable', '')
@@ -71,10 +74,9 @@ function submitFunc(){
     const boardlist = ref(getDatabase(), 'boards/'+getParameterByName('id')+'/lists')
     update(boardlist, 
     {
-            [listinputtitle.innerHTML]:{
-            }
+            [listinputtitle.innerHTML]:'empty'
     })
-    $(".largelistcontainer").append(`<div class="listcontainer" id="${listinputtitle.innerHTML}"><p1>${listinputtitle.innerHTML}</p1><br><div class="cardarea"></div><br><span1 class="listinput" id="cardtitleinput" role="textbox" contenteditable>Card Title</span1><br><button class="listinputbutton" id="createcardbutton" type="button">+</button><button class="listinputbutton" id="deletebutton" type="button">X</button></div>`)
+    $(".largelistcontainer").append(`<div class="listcontainer" id="${listinputtitle.innerHTML}"><p1>${listinputtitle.innerHTML}</p1><br><div class="cardarea"></div><br><span1 class="listinput" id="cardtitleinput" role="textbox" contenteditable>Card Title</span1><br><button class="listinputbutton" id="createcardbutton" type="button">+</button><button class="listinputbutton" id="editbutton" type="button">✎</button><button class="listinputbutton" id="deletebutton" type="button">X</button></div>`)
 }
 
 function loadlists(){

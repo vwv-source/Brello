@@ -29,7 +29,7 @@ body{
     -2px -2px 5px rgba(255, 255, 255,1);
 }
 
-.boardcontainer p1{
+.boardcontainer span1{
     font-size: 25px;
     text-transform: uppercase;
     font-weight: 600;
@@ -39,6 +39,10 @@ body{
     font-size: 25px;
     text-transform: uppercase;
     font-weight: 600;
+}
+
+span1:focus, span2:focus{
+    outline: none;
 }
 
 .boardinput{
@@ -158,6 +162,9 @@ body.dark .darkmodebutton{
 
 #openbutton{
     color: rgb(69, 255, 52);
+}
+#editbutton{
+    color: rgb(122, 51, 253);
 }
 #deletebutton{
     color: rgb(255, 55, 55);
