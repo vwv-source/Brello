@@ -16,7 +16,7 @@ body{
     height: auto;
     background-color: #ebf5fc;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
-    -2px -2px 5px rgba(255, 255, 255,1);
+    -2px -2px 5px rgba(255, 255, 255, 0.575);
 }
 
 .listcontainerinput{
@@ -26,8 +26,9 @@ body{
     margin: 10px;
     width: 150px;
     height: auto;
+    background-color: #ebf5fc;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
-    -2px -2px 5px rgba(255, 255, 255,1);
+    -2px -2px 5px rgba(255, 255, 255, 0.575);
 }
 
 .listcontainer p1{
@@ -57,25 +58,22 @@ body{
     -2px -2px 5px rgba(255, 255, 255,1);
 }
 
-.homebutton, .darkmodebutton{
-    position: fixed;
-    bottom: 1%;
-    right: 1%;
+.homebutton, .darkmodebutton, .settingsbutton{
     width: 50px;
     height: 50px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 5px;
     border: none;
     padding: 5px;
     border-radius: 5px;
     background-color: #ebf5fc;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
-    -2px -2px 5px rgba(255, 255, 255,1);
+    -2px -2px 5px rgba(255, 255, 255, 0.575);
 }
 
-.homebutton{
+.bottomrightbuttons{
+    position: fixed;
     bottom: 1%;
-    right: 5%;
+    right: 1%;
 }
 
 .bottomtext{
@@ -110,12 +108,12 @@ body{
     -2px -2px 5px inset rgba(255, 255, 255,1);
 }
 
-.listinputbutton:active, .darkmodebutton:active, .homebutton:active{
+.listinputbutton:active, .darkmodebutton:active, .homebutton:active, .settingsbutton:active{
     box-shadow: 2px 2px 5px inset rgba(0,0,0,0.1),
     -2px -2px 5px inset rgba(255, 255, 255,1);
 }
 
-.listinputbutton:hover, .darkmodebutton, .homebutton{
+.listinputbutton:hover, .darkmodebutton, .homebutton, .settingsbutton{
     cursor: pointer;
 }
 
@@ -173,6 +171,14 @@ body.dark .darkmodebutton{
     inset -2px -2px 5px rgb(0, 0, 0);
 }
 body.dark .homebutton{
+    background-color: #1b1b1b;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.1),
+    -2px -2px 15px rgb(0, 0, 0),
+    inset 2px 2px 5px rgba(0,0,0,0.1),
+    inset -2px -2px 5px rgb(0, 0, 0);
+}
+
+body.dark .settingsbutton{
     background-color: #1b1b1b;
     box-shadow: 2px 2px 15px rgba(0,0,0,0.1),
     -2px -2px 15px rgb(0, 0, 0),

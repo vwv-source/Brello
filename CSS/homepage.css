@@ -14,6 +14,7 @@ body{
     margin: 10px;
     width: 150px;
     height: auto;
+    background-size: cover;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
     -2px -2px 5px rgba(255, 255, 255,1);
 }
@@ -93,9 +94,9 @@ span1:focus, span2:focus{
     font-size: larger;
     text-align: center;
     border-radius: 5px;
-    background-color: transparent;
+    background-color: #ebf5fc;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1),
-    -2px -2px 5px rgba(255, 255, 255,1);
+    -2px -2px 5px rgba(255, 255, 255, 0.575);
 }
 
 .boardinput:focus{
@@ -135,6 +136,7 @@ body.dark .boardinput{
     inset -2px -2px 6px rgb(0, 0, 0);
 }
 body.dark .boardinputbutton{
+    background-color: #1b1b1b;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.1),
     -2px -2px 8px rgb(0, 0, 0),
     inset 2px 2px 6px rgba(0,0,0,0.1),

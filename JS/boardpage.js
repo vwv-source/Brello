@@ -25,16 +25,25 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 //----------Firebase-------------
 
-loadlists();
+loader();
+
+$(document).on('click', '.settingsbutton', function(){
+    window.location.href = "../HTML/settingspage.html?id="+getParameterByName('id')
+});
 
 $(document).on('click', '#createcardbutton', function(){
     $($(this).parent().find('.cardarea')).append(`<span1 class="listinput" id="cardtitle">${$(this).parent().find("#cardtitleinput").text()}</span1>`)
     const boardid = ref(getDatabase(), 'boards/'+getParameterByName('id')+'/lists/'+$(this).parent().attr('id'))
-    update(boardid, {
-        [$(this).parent().find("#cardtitleinput").text()]:{
-            name:$(this).parent().find("#cardtitleinput").text(),
-            type:'text'
+    get(boardid).then((snapshot) => {
+        var readablesnapshot = snapshot.val();
+        if(!readablesnapshot){
+            readablesnapshot = [1];
         }
+        update(boardid, {
+            [Object.keys(readablesnapshot).length]:{
+                name:$(this).parent().find("#cardtitleinput").text(),
+            }
+        })
     })
 });
 
@@ -44,51 +53,67 @@ $(document).on('click', '#deletebutton', function(){
     $(this).parent().remove()
 });
 
-$(document).on('click', '#editbutton', function(){
-    var id = $(this).parent().attr('id');
-    const boardid = ref(getDatabase(), 'boards/'+getParameterByName('id')+'/lists/'+id)
-    $(this).parent().find('.cardarea').find("span1").each(function(){
-        if(this.hasAttribute('contenteditable')){
-            this.removeAttribute('contenteditable')
-            update(boardid, {
-                [this.innerHTML]:{
-                    name:this.innerHTML,
-                    type:'text'
-                }
-            })
-            if(!this.innerHTML){
-                this.remove()
-            }
-        }
-        else{
-            this.setAttribute('contenteditable', '')
-            set(boardid, null)
-        }
-    })
-})
+// $(document).on('click', '#editbutton', function(){
+//     var id = $(this).parent().attr('id');
+//     const boardid = ref(getDatabase(), 'boards/'+getParameterByName('id')+'/lists/'+id)
+//     get(boardid).then((snapshot) => {  
+//         $(this).parent().find('.cardarea').find("span1").each(function(){
+//             if(this.hasAttribute('contenteditable')){
+//                 this.removeAttribute('contenteditable')
+//                 update(boardid, {
+//                     [this.innerHTML]:{
+//                         name:this.innerHTML
+//                     }
+//                 })
+//                 if(!this.innerHTML){
+//                     this.remove()
+//                 }
+//             }
+//             else{
+//                 this.setAttribute('contenteditable', '')
+//                 set(boardid, {name:snapshot.val().name})
+//             }
+//         })
+//     })
+// })
 
 createbutton.addEventListener("click", submitFunc);
 
 function submitFunc(){
     event.preventDefault();
     const boardlist = ref(getDatabase(), 'boards/'+getParameterByName('id')+'/lists')
-    update(boardlist, 
-    {
-            [listinputtitle.innerHTML]:'empty'
+    get(boardlist).then((snapshot) => {
+        var readablesnapshot = snapshot.val();
+        if(!snapshot.val()){
+            readablesnapshot = [1];
+        }
+        update(boardlist, 
+        {
+                [readablesnapshot.length]:{
+                    name:listinputtitle.textContent
+                }
+        })
     })
     $(".largelistcontainer").append(`<div class="listcontainer" id="${listinputtitle.innerHTML}"><p1>${listinputtitle.innerHTML}</p1><br><div class="cardarea"></div><br><span1 class="listinput" id="cardtitleinput" role="textbox" contenteditable>Card Title</span1><br><button class="listinputbutton" id="createcardbutton" type="button">+</button><button class="listinputbutton" id="editbutton" type="button">✎</button><button class="listinputbutton" id="deletebutton" type="button">X</button></div>`)
 }
 
-function loadlists(){
+function loader(){
     const boards = ref(getDatabase(), 'boards/'+getParameterByName('id')+'/lists')
     const boardname = ref(getDatabase(), 'boards/'+getParameterByName('id'))
+    get(boardname).then((snapshot2) => {
+        body.style.backgroundColor = snapshot2.val().bgcolor;
+        body.style.backgroundImage = `url("${snapshot2.val().bgimglink}")`;
+    })
     get(boardname).then((snapshot1) => {
         $(body).append(`<span class="bottomtext" role="textbox">${snapshot1.val().boardtitle}</span>`)
     })
     get(boards).then((snapshot) => {
         snapshot.forEach((element) => {
-            $(".largelistcontainer").append(`<div class="listcontainer" id="${element.key}"><p1>${element.key}</p1><br><div class="cardarea"></div><br><span1 class="listinput" id="cardtitleinput" role="textbox" contenteditable>Card Title</span1><br><button class="listinputbutton" id="createcardbutton" type="button">+</button><button class="listinputbutton" id="editbutton" type="button">✎</button><button class="listinputbutton" id="deletebutton" type="button">X</button></div>`)
+            $(".largelistcontainer").append(`<div class="listcontainer" id="${element.key}"><p1>${element.val().name}</p1><br><div class="cardarea"></div><br><span1 class="listinput" id="cardtitleinput" role="textbox" contenteditable>Card Title</span1><br><button class="listinputbutton" id="createcardbutton" type="button">+</button><button class="listinputbutton" id="editbutton" type="button">✎</button><button class="listinputbutton" id="deletebutton" type="button">X</button></div>`)
             element.forEach((element2) => {
+                if(!element2.val().name){
+                    return
+                }
                 $("#"+element.key).find('.cardarea').append(`<span1 class="listinput" id="cardtitle">${element2.val().name}</span1>`)
             })
         })

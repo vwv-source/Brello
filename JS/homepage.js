@@ -1,8 +1,6 @@
 const boardinputtitle = document.querySelector("#boardinputtitle")
 const boardinputdesc = document.querySelector("#boardinputdesc")
 const createbutton = document.querySelector("#createbutton")
-const deletebutton = document.querySelector("#deletebutton")
-const openbutton = document.querySelector("#openbutton")
 const largeboardcontainer = document.querySelector(".largeboardcontainer")
 import 'https://code.jquery.com/jquery-3.6.0.min.js'
 
@@ -65,7 +63,7 @@ function submitFunc(){
                 boarddesc:boardinputdesc.innerHTML
             }
     })
-    $(".largeboardcontainer").append(`<div class="boardcontainer" id="${id}"><span1>${boardinputtitle.innerHTML}</span1><br><br><span2>${boardinputdesc.innerHTML}</span2><br><br><button class="boardinputbutton" id="openbutton" type="button">⇱</button><button class="boardinputbutton" id="deletebutton" type="button">X</button></div>`)
+    $(".largeboardcontainer").append(`<div class="boardcontainer" id="${id}"><span1>${boardinputtitle.innerHTML}</span1><br><br><span2>${boardinputdesc.innerHTML}</span2><br><br><button class="boardinputbutton" id="openbutton" type="button">⇱</button><button class="boardinputbutton" id="editbutton" type="button">✎</button><button class="boardinputbutton" id="deletebutton" type="button">X</button></div>`)
 }
 
 function boardsload(){
@@ -73,7 +71,7 @@ function boardsload(){
     get(boards).then((snapshot) => {
         snapshot.forEach((element) => {
             var readelement = element.val()
-            $(".largeboardcontainer").append(`<div class="boardcontainer" id="${element.key}"><span1>${readelement.boardtitle}</span1><br><br><span2>${readelement.boarddesc}</span2><br><br><button class="boardinputbutton" id="openbutton" type="button">⇱</button><button class="boardinputbutton" id="editbutton" type="button">✎</button><button class="boardinputbutton" id="deletebutton" type="button">X</button></div>`)
+            $(".largeboardcontainer").append(`<div class="boardcontainer" id="${element.key}" style="background-color: ${readelement.bgcolor}; background-image: url('${readelement.bgimglink}')"><span1>${readelement.boardtitle}</span1><br><br><span2>${readelement.boarddesc}</span2><br><br><button class="boardinputbutton" id="openbutton" type="button">⇱</button><button class="boardinputbutton" id="editbutton" type="button">✎</button><button class="boardinputbutton" id="deletebutton" type="button">X</button></div>`)
         })
     })
 }

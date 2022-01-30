@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/settingspage.css">
+    <title>Brello Settings</title>
+</head>
+<body>
+    <div class="container">
+        <p>Background Image Link:</p>
+        <span1 class="textinput" role="textbox" id="bgimginput" contenteditable>Image Link</span1>
+        <button class="button" id="bgimgsubmit">✓</button><br><br>
+        <p>Background Color:</p>
+        <select name="Color" class="colorChoose">
+            <option value="none" selected>None</option>
+            <option value="lightpink">LightPink</option>
+            <option value="lightblue">LightBlue</option>
+            <option value="lightgreen">LightGreen</option>
+            <option value="lightsalmon">LightSalmon</option>
+        </select>
+        <button class="button" id="colorsubmit">✓</button><br><br>
+        <div id="qrcode">
+            <p>Board Link:</p><br>
+            <span2 class="textinput" role="textbox">https://www.Brello.com/homepage.html</span2><br><br>
+        </div>
+    </div>
+</body>
+<script src="../JS/settingspage.js" type="module"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</html>
