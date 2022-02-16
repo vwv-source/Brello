@@ -53,29 +53,36 @@ $(document).on('click', '#deletebutton', function(){
     $(this).parent().remove()
 });
 
-// $(document).on('click', '#editbutton', function(){
-//     var id = $(this).parent().attr('id');
-//     const boardid = ref(getDatabase(), 'boards/'+getParameterByName('id')+'/lists/'+id)
-//     get(boardid).then((snapshot) => {  
-//         $(this).parent().find('.cardarea').find("span1").each(function(){
-//             if(this.hasAttribute('contenteditable')){
-//                 this.removeAttribute('contenteditable')
-//                 update(boardid, {
-//                     [this.innerHTML]:{
-//                         name:this.innerHTML
-//                     }
-//                 })
-//                 if(!this.innerHTML){
-//                     this.remove()
-//                 }
-//             }
-//             else{
-//                 this.setAttribute('contenteditable', '')
-//                 set(boardid, {name:snapshot.val().name})
-//             }
-//         })
-//     })
-// })
+$(document).on('click', '#editbutton', function(){
+    var id = $(this).parent().attr('id');
+    var cardnum = 1;
+    const boardid = ref(getDatabase(), 'boards/'+getParameterByName('id')+'/lists/'+id)
+    $(this).parent().find('.cardarea').find("span1").each(function(){
+        get(boardid).then((snapshot) => { 
+            if(this.hasAttribute('contenteditable')){
+                this.removeAttribute('contenteditable')
+                var readablesnapshot = Object.keys(snapshot).length - 1;
+                console.log(cardnum)
+
+                update(boardid, {
+                    [cardnum]:{
+                        name:this.innerHTML
+                    }
+                })
+                    
+                if(!this.innerHTML){
+                    this.remove()
+                }
+
+                cardnum += 1;
+            }
+            else{
+                this.setAttribute('contenteditable', '')
+                set(boardid, {name:snapshot.val().name})
+            }
+        })
+    })
+})
 
 createbutton.addEventListener("click", submitFunc);
 
